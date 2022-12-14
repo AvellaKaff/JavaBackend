@@ -1,241 +1,241 @@
 package lesson3;
 
-import io.restassured.RestAssured;
 import io.restassured.http.Method;
-import org.junit.jupiter.api.BeforeAll;
+import lesson4.response.CuisineResponse;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.lessThan;
 
 public class Cuisine extends AbstractTest {
 
-    @BeforeAll
-    static void setUp() {
-        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-    }
+    String title = "title";
 
     @Test
     void postEnchiladaCuisineClassifyTest() {
+        CuisineResponse cuisineResponse =
         given()
-                .queryParam("apiKey", getApiKey())
-                .contentType("application/x-www-form-urlencoded")
-                .formParam("title","Enchilada")
-                .expect()
-                .body(containsString("Mexican"))
+                .spec(requestSpecificationCuisine)
+                .formParam(title, "Enchilada")
                 .when()
                 .request(Method.POST, getBaseUrl() + getCuisine())
                 .then()
-                .statusCode(200)
-                .time(lessThan(2000L));
+                .extract()
+                .body()
+                .as(CuisineResponse.class);
+        assertThat(cuisineResponse.getCuisine(), containsString("Mexican"));
     }
 
     @Test
     void postSushiCuisineClassifyTest() {
+        CuisineResponse cuisineResponse =
         given()
-                .queryParam("apiKey", getApiKey())
-                .contentType("application/x-www-form-urlencoded")
-                .formParam("title","Sushi")
+                .spec(requestSpecificationCuisine)
+                .formParam(title, "Sushi")
                 .expect()
-                .body(containsString("Japanese"))
                 .when()
                 .request(Method.POST, getBaseUrl() + getCuisine())
                 .then()
-                .statusCode(200)
-                .time(lessThan(2000L));
+                .extract()
+                .body()
+                .as(CuisineResponse.class);
+        assertThat(cuisineResponse.getCuisine(), containsString("Japanese"));
     }
 
     @Test
     void postHamburgerCuisineClassifyTest() {
+        CuisineResponse cuisineResponse =
         given()
-                .queryParam("apiKey", getApiKey())
-                .contentType("application/x-www-form-urlencoded")
-                .formParam("title","hamburger")
+                .spec(requestSpecificationCuisine)
+                .formParam(title, "hamburger")
                 .expect()
-                .body(containsString("American"))
                 .when()
-                .request(Method.POST, getBaseUrl() + getCuisine())
-                .then()
-                .statusCode(200)
-                .time(lessThan(2000L));
+                .request(Method.POST, getBaseUrl() + getCuisine()).then()
+                .extract()
+                .body()
+                .as(CuisineResponse.class);
+        assertThat(cuisineResponse.getCuisine(), containsString("American"));
     }
 
     @Test
     void postSconeCuisineClassifyTest() {
+        CuisineResponse cuisineResponse =
         given()
-                .queryParam("apiKey", getApiKey())
-                .contentType("application/x-www-form-urlencoded")
-                .formParam("title","Scone")
+                .spec(requestSpecificationCuisine)
+                .formParam(title, "Scone")
                 .expect()
-                .body(containsString("European"))
                 .when()
-                .request(Method.POST, getBaseUrl() + getCuisine())
-                .then()
-                .statusCode(200)
-                .time(lessThan(2000L));
+                .request(Method.POST, getBaseUrl() + getCuisine()).then()
+                .extract()
+                .body()
+                .as(CuisineResponse.class);
+        assertThat(cuisineResponse.getCuisine(), containsString("European"));
     }
 
     @Test
     void postHotdogCuisineClassifyTest() {
+        CuisineResponse cuisineResponse =
         given()
-                .queryParam("apiKey", getApiKey())
-                .contentType("application/x-www-form-urlencoded")
-                .formParam("title","Hotdog")
+                .spec(requestSpecificationCuisine)
+                .formParam(title, "Hotdog")
                 .expect()
-                .body(containsString("American"))
                 .when()
-                .request(Method.POST, getBaseUrl() + getCuisine())
-                .then()
-                .statusCode(200)
-                .time(lessThan(2000L));
+                .request(Method.POST, getBaseUrl() + getCuisine()).then()
+                .extract()
+                .body()
+                .as(CuisineResponse.class);
+        assertThat(cuisineResponse.getCuisine(), containsString("American"));
     }
 
     @Test
     void postChipsCuisineClassifyTest() {
+        CuisineResponse cuisineResponse =
         given()
-                .queryParam("apiKey", getApiKey())
-                .contentType("application/x-www-form-urlencoded")
-                .formParam("title","Chips")
+                .spec(requestSpecificationCuisine)
+                .formParam(title, "Chips")
                 .expect()
-                .body(containsString("American"))
                 .when()
-                .request(Method.POST, getBaseUrl() + getCuisine())
-                .then()
-                .statusCode(200)
-                .time(lessThan(2000L));
+                .request(Method.POST, getBaseUrl() + getCuisine()).then()
+                .extract()
+                .body()
+                .as(CuisineResponse.class);
+        assertThat(cuisineResponse.getCuisine(), containsString("American"));
     }
 
     @Test
     void postNachosCuisineClassifyTest() {
+        CuisineResponse cuisineResponse =
         given()
-                .queryParam("apiKey", getApiKey())
-                .contentType("application/x-www-form-urlencoded")
-                .formParam("title","Nachos")
+                .spec(requestSpecificationCuisine)
+                .formParam(title, "Nachos")
                 .expect()
-                .body(containsString("Mexican"))
                 .when()
-                .request(Method.POST, getBaseUrl() + getCuisine())
-                .then()
-                .statusCode(200)
-                .time(lessThan(2000L));
+                .request(Method.POST, getBaseUrl() + getCuisine()).then()
+                .extract()
+                .body()
+                .as(CuisineResponse.class);
+        assertThat(cuisineResponse.getCuisine(), containsString("Mexican"));
     }
 
     @Test
     void postCornichePastyCuisineClassifyTest() {
+        CuisineResponse cuisineResponse =
         given()
-                .queryParam("apiKey", getApiKey())
-                .contentType("application/x-www-form-urlencoded")
-                .formParam("title","Corniche pasty")
+                .spec(requestSpecificationCuisine)
+                .formParam(title, "Corniche pasty")
                 .expect()
-                .body(containsString("European"))
                 .when()
-                .request(Method.POST, getBaseUrl() + getCuisine())
-                .then()
-                .statusCode(200)
-                .time(lessThan(2000L));
+                .request(Method.POST, getBaseUrl() + getCuisine()).then()
+                .extract()
+                .body()
+                .as(CuisineResponse.class);
+        assertThat(cuisineResponse.getCuisine(), containsString("European"));
     }
 
     @Test
     void postFalafelCuisineClassifyTest() {
+        CuisineResponse cuisineResponse =
         given()
-                .queryParam("apiKey", getApiKey())
-                .contentType("application/x-www-form-urlencoded")
-                .formParam("title","Falafel")
+                .spec(requestSpecificationCuisine)
+                .formParam(title, "Falafel")
                 .expect()
-                .body(containsString("Middle Eastern"))
                 .when()
-                .request(Method.POST, getBaseUrl() + getCuisine())
-                .then()
-                .statusCode(200)
-                .time(lessThan(2000L));
+                .request(Method.POST, getBaseUrl() + getCuisine()).then()
+                .extract()
+                .body()
+                .as(CuisineResponse.class);
+        assertThat(cuisineResponse.getCuisine(), containsString("Middle Eastern"));
     }
 
     @Test
     void postEmpanadasCuisineClassifyTest() {
+        CuisineResponse cuisineResponse =
         given()
-                .queryParam("apiKey", getApiKey())
-                .contentType("application/x-www-form-urlencoded")
-                .formParam("title","Empanadas")
+                .spec(requestSpecificationCuisine)
+                .formParam(title, "Empanadas")
                 .expect()
-                .body(containsString("European"))
                 .when()
-                .request(Method.POST, getBaseUrl() + getCuisine())
-                .then()
-                .statusCode(200)
-                .time(lessThan(2000L));
+                .request(Method.POST, getBaseUrl() + getCuisine()).then()
+                .extract()
+                .body()
+                .as(CuisineResponse.class);
+        assertThat(cuisineResponse.getCuisine(), containsString("European"));
     }
 
     @Test
     void postHummusCuisineClassifyTest() {
+        CuisineResponse cuisineResponse =
         given()
-                .queryParam("apiKey", getApiKey())
-                .contentType("application/x-www-form-urlencoded")
-                .formParam("title","Hummus")
+                .spec(requestSpecificationCuisine)
+                .formParam(title, "Hummus")
                 .expect()
-                .body(containsString("Middle Eastern"))
                 .when()
-                .request(Method.POST, getBaseUrl() + getCuisine())
-                .then()
-                .statusCode(200)
-                .time(lessThan(2000L));
+                .request(Method.POST, getBaseUrl() + getCuisine()).then()
+                .extract()
+                .body()
+                .as(CuisineResponse.class);
+        assertThat(cuisineResponse.getCuisine(), containsString("Middle Eastern"));
     }
+
     @Test
     void postTabboulehCuisineClassifyTest() {
+        CuisineResponse cuisineResponse =
         given()
-                .queryParam("apiKey", getApiKey())
-                .contentType("application/x-www-form-urlencoded")
-                .formParam("title","Tabbouleh")
+                .spec(requestSpecificationCuisine)
+                .formParam(title, "Tabbouleh")
                 .expect()
-                .body(containsString("Middle Eastern"))
                 .when()
-                .request(Method.POST, getBaseUrl() + getCuisine())
-                .then()
-                .statusCode(200)
-                .time(lessThan(2000L));
+                .request(Method.POST, getBaseUrl() + getCuisine()).then()
+                .extract()
+                .body()
+                .as(CuisineResponse.class);
+        assertThat(cuisineResponse.getCuisine(), containsString("Middle Eastern"));
     }
+
     @Test
     void postFattoushCuisineClassifyTest() {
+        CuisineResponse cuisineResponse =
         given()
-                .queryParam("apiKey", getApiKey())
-                .contentType("application/x-www-form-urlencoded")
-                .formParam("title","Fattoush")
+                .spec(requestSpecificationCuisine)
+                .formParam(title, "Fattoush")
                 .expect()
-                .body(containsString("Middle Eastern"))
                 .when()
-                .request(Method.POST, getBaseUrl() + getCuisine())
-                .then()
-                .statusCode(200)
-                .time(lessThan(2000L));
+                .request(Method.POST, getBaseUrl() + getCuisine()).then()
+                .extract()
+                .body()
+                .as(CuisineResponse.class);
+        assertThat(cuisineResponse.getCuisine(), containsString("Middle Eastern"));
     }
+
     @Test
     void postSalsaCuisineClassifyTest() {
+        CuisineResponse cuisineResponse =
         given()
-                .queryParam("apiKey", getApiKey())
-                .contentType("application/x-www-form-urlencoded")
-                .formParam("title","Salsa")
+                .spec(requestSpecificationCuisine)
+                .formParam(title, "Salsa")
                 .expect()
-                .body(containsString("Mexican"))
                 .when()
-                .request(Method.POST, getBaseUrl() + getCuisine())
-                .then()
-                .statusCode(200)
-                .time(lessThan(2000L));
+                .request(Method.POST, getBaseUrl() + getCuisine()).then()
+                .extract()
+                .body()
+                .as(CuisineResponse.class);
+        assertThat(cuisineResponse.getCuisine(), containsString("Mexican"));
     }
+
     @Test
     void postGuacamoleCuisineClassifyTest() {
+        CuisineResponse cuisineResponse =
         given()
-                .queryParam("apiKey", getApiKey())
-                .contentType("application/x-www-form-urlencoded")
-                .formParam("title","Guacamole")
+                .spec(requestSpecificationCuisine)
+                .formParam(title, "Guacamole")
                 .expect()
-                .body(containsString("Mexican"))
                 .when()
-                .request(Method.POST, getBaseUrl() + getCuisine())
-                .prettyPeek()
-                .then()
-                .statusCode(200)
-                .time(lessThan(2000L));
+                .request(Method.POST, getBaseUrl() + getCuisine()).then()
+                .extract()
+                .body()
+                .as(CuisineResponse.class);
+        assertThat(cuisineResponse.getCuisine(), containsString("Mexican"));
     }
 
 }
